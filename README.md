@@ -32,16 +32,16 @@ OPENAI_API_KEY = get_openai_api_key()
 import nest_asyncio
 nest_asyncio.apply()
 
-# urls = [
-#     "https://openreview.net/pdf?id=5atraF1tbg",
-#     "https://openreview.net/pdf?id=YaEozn3y0G",
-#     "https://openreview.net/pdf?id=P6NcRPb13w",
-# ]
+urls = [
+    "https://openreview.net/pdf?id=XmProj9cPs",
+    "https://openreview.net/pdf?id=NGKQoaqLpo",
+    "https://openreview.net/pdf?id=odjMSBSWRt",
+]
 
 papers = [
-    "privacy.pdf",
-    "ml_topo.pdf",
-    "ml4.pdf",
+    "spider.pdf",
+    "llmknowledgedilute.pdf",
+    "darkbench.pdf",
 ]
 
 from utils import get_doc_tools
@@ -72,9 +72,18 @@ agent_worker = FunctionCallingAgentWorker.from_tools(
 agent = AgentRunner(agent_worker)
 
 response = agent.query(
-    "Tell me about the Topology used in Machine Learning, "
-    "and then tell me about privacy"
+    "Why was Spider 2.0 created, and what problem does it solve in enterprise text-to-SQL workflows?"
 )
+
+response = agent.query(
+    "How does new surprising text affect LLMs’ existing knowledge, and how can this impact be controlled?"
+)
+
+response = agent.query(
+    "How prevalent are dark patterns in LLMs and chatbots, and what benchmarks or methods exist to detect and mitigate them?"
+)
+
+
 
 ```
 ### OUTPUT:
